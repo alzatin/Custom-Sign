@@ -7,13 +7,12 @@
   "ioValues": [
     {
       "name": "Text",
-      "ioValue": "Te quiero",
-      "currentEquation": "Te quiero"
+      "ioValue": "Te QUIERO",
+      "currentEquation": "Te QUIERO"
     },
     {
       "name": "Font_Size",
-      "ioValue": 50,
-      "currentEquation": "50"
+      "ioValue": 60
     },
     {
       "name": "ply_thickness",
@@ -22,8 +21,8 @@
     },
     {
       "name": "Margin",
-      "ioValue": 100,
-      "currentEquation": "100"
+      "ioValue": 50,
+      "currentEquation": "50"
     }
   ],
   "topLevel": true,
@@ -65,11 +64,11 @@
       "ioValues": [
         {
           "name": "width",
-          "ioValue": 302.392580125
+          "ioValue": 333.388673875
         },
         {
           "name": "length",
-          "ioValue": 146.19140825
+          "ioValue": 100.44922075
         },
         {
           "name": "radius",
@@ -106,7 +105,7 @@
             },
             {
               "name": "width",
-              "ioValue": 302.392580125
+              "ioValue": 333.388673875
             },
             {
               "name": "rad",
@@ -114,7 +113,7 @@
             },
             {
               "name": "length",
-              "ioValue": 146.19140825
+              "ioValue": 100.44922075
             }
           ],
           "codeVersion": 1,
@@ -224,11 +223,11 @@
       "ioValues": [
         {
           "name": "Font Size",
-          "ioValue": 50
+          "ioValue": 60
         },
         {
           "name": "Text",
-          "ioValue": "Te quiero",
+          "ioValue": "Te QUIERO",
           "currentEquation": "Lorem Ipsum"
         }
       ],
@@ -251,7 +250,7 @@
         },
         {
           "name": "margin",
-          "ioValue": 100
+          "ioValue": 50
         }
       ],
       "codeVersion": 1,
@@ -273,7 +272,7 @@
         },
         {
           "name": "margin",
-          "ioValue": 100
+          "ioValue": 50
         }
       ],
       "codeVersion": 1,
@@ -291,11 +290,11 @@
         },
         {
           "name": "xDist",
-          "ioValue": -151.1962900625
+          "ioValue": -141.6943369375
         },
         {
           "name": "yDist",
-          "ioValue": -73.095704125
+          "ioValue": -25.224610374999997
         },
         {
           "name": "zDist",
@@ -355,28 +354,36 @@
       "x": 0.5703125,
       "y": 0.5558912386706948,
       "uniqueID": "id-977",
-      "name": "-x/2",
+      "name": "-x/2 + y/2",
       "ioValues": [
         {
           "name": "x",
-          "ioValue": 302.392580125
+          "ioValue": 333.388673875
+        },
+        {
+          "name": "y",
+          "ioValue": 50
         }
       ],
-      "currentEquation": "-x/2"
+      "currentEquation": "-x/2 + y/2"
     },
     {
       "atomType": "Equation",
-      "x": 0.46777343750000006,
+      "x": 0.45703124999999994,
       "y": 0.8640483383685801,
       "uniqueID": "id-981",
-      "name": "-y/2",
+      "name": "-y/2 + x/2",
       "ioValues": [
         {
           "name": "y",
-          "ioValue": 146.19140825
+          "ioValue": 100.44922075
+        },
+        {
+          "name": "x",
+          "ioValue": 50
         }
       ],
-      "currentEquation": "-y/2"
+      "currentEquation": "-y/2 + x/2"
     },
     {
       "atomType": "Input",
@@ -486,6 +493,16 @@
       "ap2Name": "margin",
       "ap1ID": "id-986",
       "ap2ID": "id-950"
+    },
+    {
+      "ap2Name": "y",
+      "ap1ID": "id-986",
+      "ap2ID": "id-977"
+    },
+    {
+      "ap2Name": "x",
+      "ap1ID": "id-986",
+      "ap2ID": "id-981"
     }
   ],
   "unitsKey": "MM",
