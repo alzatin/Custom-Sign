@@ -624,6 +624,36 @@
       },
       "unitsKey": "Unitless",
       "fileTypeVersion": 1
+    },
+    {
+      "atomType": "Export",
+      "x": 0.6998191681735986,
+      "y": 0.891238670694864,
+      "uniqueID": "id-1522",
+      "ioValues": [
+        {
+          "name": "geometry",
+          "ioValue": "__GEOMETRY_INPUT__"
+        },
+        {
+          "name": "File Type",
+          "ioValue": "STL",
+          "currentEquation": "STL"
+        },
+        {
+          "name": "Resolution (dpi)",
+          "ioValue": 96
+        },
+        {
+          "name": "Part Name",
+          "ioValue": "Custom-Sign-STL",
+          "currentEquation": "Custom-Sign-STL"
+        }
+      ],
+      "type": null,
+      "resolution": 96,
+      "importIndex": 0,
+      "partName": "Custom-Sign-STL"
     }
   ],
   "allConnectors": [
@@ -711,6 +741,11 @@
       "ap2Name": "number or geometry",
       "ap1ID": "id-970",
       "ap2ID": "id-884"
+    },
+    {
+      "ap2Name": "geometry",
+      "ap1ID": "id-970",
+      "ap2ID": "id-1522"
     },
     {
       "ap2Name": "xDist",
