@@ -6,11 +6,9 @@
 
 
 
- Project Width
+ Text
 
-**Value:** 528.056652625
-
-Text
+Project Width
 
 
 
