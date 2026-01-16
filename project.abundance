@@ -426,8 +426,8 @@
     },
     {
       "atomType": "GitHubMolecule",
-      "x": 0.744663382594417,
-      "y": 0.7794561933534743,
+      "x": 0.6473333333333333,
+      "y": 0.8700906344410876,
       "uniqueID": "id-1070",
       "name": "Get-Width",
       "ioValues": [
@@ -511,7 +511,7 @@
           "name": "README",
           "ioValues": [
             {
-              "name": "geometry",
+              "name": "value",
               "ioValue": "__GEOMETRY_INPUT__"
             }
           ],
@@ -561,6 +561,21 @@
       },
       "unitsKey": "Unitless",
       "fileTypeVersion": 1
+    },
+    {
+      "atomType": "Readme",
+      "x": 0.7646666666666667,
+      "y": 0.8066465256797584,
+      "uniqueID": "id-1150",
+      "name": "README",
+      "ioValues": [
+        {
+          "name": "value",
+          "ioValue": "__GEOMETRY_INPUT__"
+        }
+      ],
+      "readMeText": "Width",
+      "global": true
     }
   ],
   "allConnectors": [
@@ -683,6 +698,11 @@
       "ap2Name": "geometry1",
       "ap1ID": "id-906",
       "ap2ID": "id-970"
+    },
+    {
+      "ap2Name": "value",
+      "ap1ID": "id-1070",
+      "ap2ID": "id-1150"
     }
   ],
   "unitsKey": "MM",
