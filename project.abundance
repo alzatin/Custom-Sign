@@ -20,7 +20,8 @@
     },
     {
       "name": "Margin",
-      "ioValue": 101
+      "ioValue": 10,
+      "currentEquation": "10"
     },
     {
       "name": "RouterBitSize",
@@ -32,8 +33,8 @@
     },
     {
       "name": "2DShape?",
-      "ioValue": "__GEOMETRY_INPUT__",
-      "currentEquation": "__GEOMETRY_INPUT__"
+      "ioValue": "circle",
+      "currentEquation": "circle"
     },
     {
       "name": "Font",
@@ -113,7 +114,7 @@
         },
         {
           "name": "margin",
-          "ioValue": 101
+          "ioValue": 10
         }
       ],
       "codeVersion": 1,
@@ -135,7 +136,7 @@
         },
         {
           "name": "margin",
-          "ioValue": 101
+          "ioValue": 10
         }
       ],
       "codeVersion": 1,
@@ -220,11 +221,11 @@
       "ioValues": [
         {
           "name": "x",
-          "ioValue": 409.4765645
+          "ioValue": 318.4765645
         },
         {
           "name": "y",
-          "ioValue": 101
+          "ioValue": 10
         }
       ],
       "currentEquation": "-x/2 + y/2"
@@ -238,11 +239,11 @@
       "ioValues": [
         {
           "name": "y",
-          "ioValue": 135.90234575
+          "ioValue": 44.902345749999995
         },
         {
           "name": "x",
-          "ioValue": 101
+          "ioValue": 10
         }
       ],
       "currentEquation": "-y/2 + x/2"
@@ -390,23 +391,7 @@
       "ioValues": [
         {
           "name": "diameter",
-          "ioValue": 409.4765645
-        }
-      ]
-    },
-    {
-      "atomType": "Extrude",
-      "x": 0.4786666666666667,
-      "y": 0.8580060422960726,
-      "uniqueID": "id-1830",
-      "ioValues": [
-        {
-          "name": "geometry",
-          "ioValue": "__GEOMETRY_INPUT__"
-        },
-        {
-          "name": "height",
-          "ioValue": 14
+          "ioValue": 318.4765645
         }
       ]
     },
@@ -428,7 +413,7 @@
     {
       "atomType": "Input",
       "x": 0.0264,
-      "y": 0.8308157099697885,
+      "y": 0.8319999999999999,
       "uniqueID": "id-1938",
       "name": "Font",
       "type": "array",
@@ -436,6 +421,32 @@
         "ROBOTO",
         "ANTON"
       ]
+    },
+    {
+      "atomType": "Code",
+      "x": 0.28295254833040423,
+      "y": 0.8398791540785498,
+      "uniqueID": "id-2048",
+      "ioValues": [
+        {
+          "name": "radius",
+          "ioValue": 318.4765645
+        },
+        {
+          "name": "height",
+          "ioValue": 10
+        },
+        {
+          "name": "shapetype",
+          "ioValue": "circle"
+        },
+        {
+          "name": "width",
+          "ioValue": 10
+        }
+      ],
+      "codeVersion": 1,
+      "code": "\n// Example Code\nconst Inputs = [\n  { inputName: \"shapetype\", type: \"string\", defaultValue: \"rect\" },\n  { inputName: \"radius\", type: \"number\", defaultValue: 6 },\n  { inputName: \"width\", type: \"number\", defaultValue: 10 },\n  { inputName: \"height\", type: \"number\", defaultValue: 10 }\n];\n\n//let importedShape = library[shape];\nlet newPlane = replicad.makePlane()\nlet circDraw\nif(shapetype == \"circle\"){\ncircDraw = replicad.drawCircle(radius/2)\n}\nelse {\n  circDraw = replicad.drawRoundedRectangle(5, 10, 1)\n}\nlet sketchCir = circDraw.sketchOnPlane(newPlane)\nlet cyl = sketchCir.extrude(height)\nlet cylObj = {\n  geometry: [cyl],\n  dimension: \"3D\",\n  tags: [\"createdcirc\"],\n  color: \"#A3CE5B\",\n  plane: null,\n  bom: []\n};\n\n//let assembly = await Assembly([importedShape, cylObj]);\nreturn cylObj;\n"
     },
     {
       "atomType": "GitHubMolecule",
@@ -446,11 +457,11 @@
       "ioValues": [
         {
           "name": "width",
-          "ioValue": 409.4765645
+          "ioValue": 318.4765645
         },
         {
           "name": "length",
-          "ioValue": 135.90234575
+          "ioValue": 44.902345749999995
         },
         {
           "name": "radius",
@@ -487,7 +498,7 @@
             },
             {
               "name": "width",
-              "ioValue": 409.4765645
+              "ioValue": 318.4765645
             },
             {
               "name": "rad",
@@ -495,7 +506,7 @@
             },
             {
               "name": "length",
-              "ioValue": 135.90234575
+              "ioValue": 44.902345749999995
             }
           ],
           "codeVersion": 1,
@@ -746,34 +757,6 @@
       },
       "unitsKey": "Unitless",
       "fileTypeVersion": 1
-    },
-    {
-      "atomType": "Code",
-      "x": 0.2671353251318102,
-      "y": 0.8338368580060423,
-      "uniqueID": "id-2048",
-      "ioValues": [
-        {
-          "name": "radius",
-          "ioValue": 1,
-          "currentEquation": "1"
-        },
-        {
-          "name": "height",
-          "ioValue": 10
-        },
-        {
-          "name": "shapetype",
-          "ioValue": "rectangle",
-          "currentEquation": "rectangle"
-        },
-        {
-          "name": "width",
-          "ioValue": 10
-        }
-      ],
-      "codeVersion": 1,
-      "code": "\n// Example Code\nconst Inputs = [\n  { inputName: \"shapetype\", type: \"string\", defaultValue: \"rect\" },\n  { inputName: \"radius\", type: \"number\", defaultValue: 6 },\n  { inputName: \"width\", type: \"number\", defaultValue: 10 },\n  { inputName: \"height\", type: \"number\", defaultValue: 10 }\n];\n\n//let importedShape = library[shape];\nlet newPlane = replicad.makePlane()\nlet circDraw\nif(shapetype == \"circle\"){\ncircDraw = replicad.drawCircle(radius)\n}\nelse {\n  circDraw = replicad.drawRoundedRectangle(5, 10, radius)\n}\nlet sketchCir = circDraw.sketchOnPlane(newPlane)\nlet cyl = sketchCir.extrude(height)\nlet cylObj = {\n  geometry: [cyl],\n  dimension: \"3D\",\n  tags: [\"createdcirc\"],\n  color: \"#A3CE5B\",\n  plane: null,\n  bom: []\n};\n\n//let assembly = await Assembly([importedShape, cylObj]);\nreturn cylObj;\n"
     }
   ],
   "allConnectors": [
@@ -796,11 +779,6 @@
       "ap2Name": "x",
       "ap1ID": "id-924",
       "ap2ID": "id-966"
-    },
-    {
-      "ap2Name": "height",
-      "ap1ID": "id-924",
-      "ap2ID": "id-1830"
     },
     {
       "ap2Name": "shape",
@@ -831,6 +809,11 @@
       "ap2Name": "diameter",
       "ap1ID": "id-939",
       "ap2ID": "id-1827"
+    },
+    {
+      "ap2Name": "radius",
+      "ap1ID": "id-939",
+      "ap2ID": "id-2048"
     },
     {
       "ap2Name": "length",
@@ -918,9 +901,9 @@
       "ap2ID": "id-997"
     },
     {
-      "ap2Name": "geometry",
+      "ap2Name": "shapetype",
       "ap1ID": "id-1724",
-      "ap2ID": "id-1830"
+      "ap2ID": "id-2048"
     },
     {
       "ap2Name": "geometry1",
@@ -929,7 +912,7 @@
     },
     {
       "ap2Name": "shape",
-      "ap1ID": "id-1830",
+      "ap1ID": "id-2048",
       "ap2ID": "id-1727"
     },
     {
