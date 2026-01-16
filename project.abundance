@@ -198,8 +198,8 @@
     },
     {
       "atomType": "Difference",
-      "x": 0.8093145869947275,
-      "y": 0.1933534743202417,
+      "x": 0.781195079086116,
+      "y": 0.2175226586102719,
       "uniqueID": "id-970",
       "ioValues": [
         {
@@ -381,7 +381,7 @@
         }
       ],
       "codeVersion": 1,
-      "code": "\n// Example Code\nconst Inputs = [\n  { inputName: \"shape\", type: \"geometry\", defaultValue: null },\n  { inputName: \"defaultShape\", type: \"geometry\", defaultValue: null },\n  { inputName: \"height\", type: \"number\", defaultValue: 10 }\n];\n\nlet importedShape = library[shape];\n\nif (importedShape){\n  console.log(\"Found a geometry input\")\n}\nelse{\n  importedShape = library[defaultShape];\n}\nlet newPlane = replicad.makePlane()\nlet circDraw = replicad.drawCircle(6)\nlet sketchCir = circDraw.sketchOnPlane(newPlane)\nlet cyl = sketchCir.extrude(height)\nlet cylObj = {\n  geometry: [cyl],\n  dimension: \"3D\",\n  tags: [\"createdCylinder\"],\n  color: \"#A3CE5B\",\n  plane: null,\n  bom: []\n};\n\nlet assembly = await Assembly([importedShape, cylObj]);\nreturn assembly;\n"
+      "code": "\n// Example Code\nconst Inputs = [\n  { inputName: \"shape\", type: \"geometry\", defaultValue: null },\n  { inputName: \"defaultShape\", type: \"geometry\", defaultValue: null },\n  { inputName: \"height\", type: \"number\", defaultValue: 10 }\n];\n\nlet importedShape = library[shape];\n\nif (importedShape){\n  console.log(\"Found a geometry input\")\n}\nelse{\n  importedShape = library[defaultShape];\n}\nlet newPlane = replicad.makePlane()\nlet circDraw = replicad.drawCircle(6)\nlet sketchCir = circDraw.sketchOnPlane(newPlane)\nlet cyl = sketchCir.extrude(height)\nlet cylObj = {\n  geometry: [cyl],\n  dimension: \"3D\",\n  tags: [\"createdCylinder\"],\n  color: \"#A3CE5B\",\n  plane: null,\n  bom: []\n};\n\n//let assembly = await Assembly([importedShape, cylObj]);\nreturn importedShape;\n"
     },
     {
       "atomType": "Circle",
@@ -434,7 +434,7 @@
         },
         {
           "name": "height",
-          "ioValue": 10
+          "ioValue": 9
         },
         {
           "name": "shapetype",
