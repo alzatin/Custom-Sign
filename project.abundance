@@ -20,7 +20,8 @@
     },
     {
       "name": "Margin",
-      "ioValue": 100
+      "ioValue": 101,
+      "currentEquation": "101"
     },
     {
       "name": "RouterBitSize",
@@ -93,8 +94,8 @@
     },
     {
       "atomType": "Code",
-      "x": 0.33866666666666667,
-      "y": 0.1691842900302115,
+      "x": 0.3373333333333333,
+      "y": 0.17522658610271905,
       "uniqueID": "id-939",
       "ioValues": [
         {
@@ -107,16 +108,16 @@
         },
         {
           "name": "margin",
-          "ioValue": 100
+          "ioValue": 101
         }
       ],
       "codeVersion": 1,
-      "code": "\n// Example Code\nconst Inputs = [\n  { inputName: \"shape\", type: \"geometry\", defaultValue: null },\n  { inputName: \"radius\", type: \"number\", defaultValue: 5 },\n  { inputName: \"margin\", type: \"number\", defaultValue: 10 }\n];\n\n\nlet importedShape = library[shape];\nconsole.log(importedShape)\n\nfunction extractBox(boxObj) {\n  if (!boxObj) return null;\n  // If bounds is an array of two arrays\n  if (\n    Array.isArray(boxObj.bounds) &&\n    boxObj.bounds.length === 2 &&\n    Array.isArray(boxObj.bounds[0]) &&\n    Array.isArray(boxObj.bounds[1])\n  ) {\n    const [min, max] = boxObj.bounds;\n    // 2D: [minX, minY, minZ, maxX, maxY, maxZ]\n    return [min[0], min[1], 0, max[0], max[1], 0];\n  }\n  // If _wrapped has a bounds property\n  if (\n    boxObj._wrapped &&\n    Array.isArray(boxObj._wrapped.bounds) &&\n    boxObj._wrapped.bounds.length === 2 &&\n    Array.isArray(boxObj._wrapped.bounds[0]) &&\n    Array.isArray(boxObj._wrapped.bounds[1])\n  ) {\n    const [min, max] = boxObj._wrapped.bounds;\n    return [min[0], min[1], 0, max[0], max[1], 0];\n  }\n  return null;\n}\n\nfunction getBoundingBox(obj) {\n  const visited = new Set();\n\n  function mergeBoxes(a, b) {\n    if (!a) return b;\n    if (!b) return a;\n    return [\n      Math.min(a[0], b[0]),\n      Math.min(a[1], b[1]),\n      Math.min(a[2], b[2]),\n      Math.max(a[3], b[3]),\n      Math.max(a[4], b[4]),\n      Math.max(a[5], b[5]),\n    ];\n  }\n\n  function recurse(val) {\n    if (!val || typeof val !== \"object\") return null;\n    if (visited.has(val)) return null;\n    visited.add(val);\n\n    // Try to extract bounding box from _boundingBox or boundingBox\n    let box = extractBox(val._boundingBox) || extractBox(val.boundingBox);\n    // Only recurse into geometry arrays\n    if (Array.isArray(val.geometry)) {\n      box = val.geometry.reduce(\n        (acc, item) => mergeBoxes(acc, recurse(item)),\n        box\n      );\n    }\n    // If this is an array, recurse into each item\n    if (Array.isArray(val)) {\n      box = val.reduce((acc, item) => mergeBoxes(acc, recurse(item)), box);\n    }\n    return box;\n  }\n\n  return recurse(obj);\n}\n\nfunction getBoundingBoxSize(bbox) {\n  if (!Array.isArray(bbox) || bbox.length < 6) return null;\n  const width = bbox[3] - bbox[0];\n  const height = bbox[4] - bbox[1];\n  return { width, height };\n}\n\nconst boundingBox= getBoundingBox(importedShape)\nconsole.log(boundingBox)\nconst boundingBoxSize= getBoundingBoxSize(boundingBox)\nconsole.log(boundingBoxSize)\n\n//let assembly = await Assembly([importedShape, cylObj]);\nreturn boundingBoxSize.width + margin;\n"
+      "code": "\n// Example Code\nconst Inputs = [\n  { inputName: \"shape\", type: \"geometry\", defaultValue: null },\n  { inputName: \"radius\", type: \"number\", defaultValue: 5 },\n  { inputName: \"margin\", type: \"number\", defaultValue: 10 }\n];\n\n//this code atom returns the boundingBoxsize width of the shape input\n\nlet importedShape = library[shape];\nconsole.log(importedShape)\n\nfunction extractBox(boxObj) {\n  if (!boxObj) return null;\n  // If bounds is an array of two arrays\n  if (\n    Array.isArray(boxObj.bounds) &&\n    boxObj.bounds.length === 2 &&\n    Array.isArray(boxObj.bounds[0]) &&\n    Array.isArray(boxObj.bounds[1])\n  ) {\n    const [min, max] = boxObj.bounds;\n    // 2D: [minX, minY, minZ, maxX, maxY, maxZ]\n    return [min[0], min[1], 0, max[0], max[1], 0];\n  }\n  // If _wrapped has a bounds property\n  if (\n    boxObj._wrapped &&\n    Array.isArray(boxObj._wrapped.bounds) &&\n    boxObj._wrapped.bounds.length === 2 &&\n    Array.isArray(boxObj._wrapped.bounds[0]) &&\n    Array.isArray(boxObj._wrapped.bounds[1])\n  ) {\n    const [min, max] = boxObj._wrapped.bounds;\n    return [min[0], min[1], 0, max[0], max[1], 0];\n  }\n  return null;\n}\n\nfunction getBoundingBox(obj) {\n  const visited = new Set();\n\n  function mergeBoxes(a, b) {\n    if (!a) return b;\n    if (!b) return a;\n    return [\n      Math.min(a[0], b[0]),\n      Math.min(a[1], b[1]),\n      Math.min(a[2], b[2]),\n      Math.max(a[3], b[3]),\n      Math.max(a[4], b[4]),\n      Math.max(a[5], b[5]),\n    ];\n  }\n\n  function recurse(val) {\n    if (!val || typeof val !== \"object\") return null;\n    if (visited.has(val)) return null;\n    visited.add(val);\n\n    // Try to extract bounding box from _boundingBox or boundingBox\n    let box = extractBox(val._boundingBox) || extractBox(val.boundingBox);\n    // Only recurse into geometry arrays\n    if (Array.isArray(val.geometry)) {\n      box = val.geometry.reduce(\n        (acc, item) => mergeBoxes(acc, recurse(item)),\n        box\n      );\n    }\n    // If this is an array, recurse into each item\n    if (Array.isArray(val)) {\n      box = val.reduce((acc, item) => mergeBoxes(acc, recurse(item)), box);\n    }\n    return box;\n  }\n\n  return recurse(obj);\n}\n\nfunction getBoundingBoxSize(bbox) {\n  if (!Array.isArray(bbox) || bbox.length < 6) return null;\n  const width = bbox[3] - bbox[0];\n  const height = bbox[4] - bbox[1];\n  return { width, height };\n}\n\nconst boundingBox= getBoundingBox(importedShape)\nconsole.log(boundingBox)\nconst boundingBoxSize= getBoundingBoxSize(boundingBox)\nconsole.log(boundingBoxSize)\n\n//let assembly = await Assembly([importedShape, cylObj]);\nreturn boundingBoxSize.width + margin;\n"
     },
     {
       "atomType": "Code",
-      "x": 0.374,
-      "y": 0.3685800604229607,
+      "x": 0.372,
+      "y": 0.38368580060422963,
       "uniqueID": "id-950",
       "ioValues": [
         {
@@ -129,16 +130,16 @@
         },
         {
           "name": "margin",
-          "ioValue": 100
+          "ioValue": 101
         }
       ],
       "codeVersion": 1,
-      "code": "\n// Example Code\nconst Inputs = [\n  { inputName: \"shape\", type: \"geometry\", defaultValue: null },\n  { inputName: \"radius\", type: \"number\", defaultValue: 5 },\n  { inputName: \"margin\", type: \"number\", defaultValue: 10 }\n];\n\n\nlet importedShape = library[shape];\nconsole.log(importedShape)\n\nfunction extractBox(boxObj) {\n  if (!boxObj) return null;\n  // If bounds is an array of two arrays\n  if (\n    Array.isArray(boxObj.bounds) &&\n    boxObj.bounds.length === 2 &&\n    Array.isArray(boxObj.bounds[0]) &&\n    Array.isArray(boxObj.bounds[1])\n  ) {\n    const [min, max] = boxObj.bounds;\n    // 2D: [minX, minY, minZ, maxX, maxY, maxZ]\n    return [min[0], min[1], 0, max[0], max[1], 0];\n  }\n  // If _wrapped has a bounds property\n  if (\n    boxObj._wrapped &&\n    Array.isArray(boxObj._wrapped.bounds) &&\n    boxObj._wrapped.bounds.length === 2 &&\n    Array.isArray(boxObj._wrapped.bounds[0]) &&\n    Array.isArray(boxObj._wrapped.bounds[1])\n  ) {\n    const [min, max] = boxObj._wrapped.bounds;\n    return [min[0], min[1], 0, max[0], max[1], 0];\n  }\n  return null;\n}\n\nfunction getBoundingBox(obj) {\n  const visited = new Set();\n\n  function mergeBoxes(a, b) {\n    if (!a) return b;\n    if (!b) return a;\n    return [\n      Math.min(a[0], b[0]),\n      Math.min(a[1], b[1]),\n      Math.min(a[2], b[2]),\n      Math.max(a[3], b[3]),\n      Math.max(a[4], b[4]),\n      Math.max(a[5], b[5]),\n    ];\n  }\n\n  function recurse(val) {\n    if (!val || typeof val !== \"object\") return null;\n    if (visited.has(val)) return null;\n    visited.add(val);\n\n    // Try to extract bounding box from _boundingBox or boundingBox\n    let box = extractBox(val._boundingBox) || extractBox(val.boundingBox);\n    // Only recurse into geometry arrays\n    if (Array.isArray(val.geometry)) {\n      box = val.geometry.reduce(\n        (acc, item) => mergeBoxes(acc, recurse(item)),\n        box\n      );\n    }\n    // If this is an array, recurse into each item\n    if (Array.isArray(val)) {\n      box = val.reduce((acc, item) => mergeBoxes(acc, recurse(item)), box);\n    }\n    return box;\n  }\n\n  return recurse(obj);\n}\n\nfunction getBoundingBoxSize(bbox) {\n  if (!Array.isArray(bbox) || bbox.length < 6) return null;\n  const width = bbox[3] - bbox[0];\n  const height = bbox[4] - bbox[1];\n  return { width, height };\n}\n\nconst boundingBox= getBoundingBox(importedShape)\nconsole.log(boundingBox)\nconst boundingBoxSize= getBoundingBoxSize(boundingBox)\nconsole.log(boundingBoxSize)\n\n//let assembly = await Assembly([importedShape, cylObj]);\nreturn boundingBoxSize.height + margin;\n"
+      "code": "\n// Example Code\nconst Inputs = [\n  { inputName: \"shape\", type: \"geometry\", defaultValue: null },\n  { inputName: \"radius\", type: \"number\", defaultValue: 5 },\n  { inputName: \"margin\", type: \"number\", defaultValue: 10 }\n];\n\n\n//this code atom returns the boundingBoxsize height of the shape input as a number\nlet importedShape = library[shape];\nconsole.log(importedShape)\n\nfunction extractBox(boxObj) {\n  if (!boxObj) return null;\n  // If bounds is an array of two arrays\n  if (\n    Array.isArray(boxObj.bounds) &&\n    boxObj.bounds.length === 2 &&\n    Array.isArray(boxObj.bounds[0]) &&\n    Array.isArray(boxObj.bounds[1])\n  ) {\n    const [min, max] = boxObj.bounds;\n    // 2D: [minX, minY, minZ, maxX, maxY, maxZ]\n    return [min[0], min[1], 0, max[0], max[1], 0];\n  }\n  // If _wrapped has a bounds property\n  if (\n    boxObj._wrapped &&\n    Array.isArray(boxObj._wrapped.bounds) &&\n    boxObj._wrapped.bounds.length === 2 &&\n    Array.isArray(boxObj._wrapped.bounds[0]) &&\n    Array.isArray(boxObj._wrapped.bounds[1])\n  ) {\n    const [min, max] = boxObj._wrapped.bounds;\n    return [min[0], min[1], 0, max[0], max[1], 0];\n  }\n  return null;\n}\n\nfunction getBoundingBox(obj) {\n  const visited = new Set();\n\n  function mergeBoxes(a, b) {\n    if (!a) return b;\n    if (!b) return a;\n    return [\n      Math.min(a[0], b[0]),\n      Math.min(a[1], b[1]),\n      Math.min(a[2], b[2]),\n      Math.max(a[3], b[3]),\n      Math.max(a[4], b[4]),\n      Math.max(a[5], b[5]),\n    ];\n  }\n\n  function recurse(val) {\n    if (!val || typeof val !== \"object\") return null;\n    if (visited.has(val)) return null;\n    visited.add(val);\n\n    // Try to extract bounding box from _boundingBox or boundingBox\n    let box = extractBox(val._boundingBox) || extractBox(val.boundingBox);\n    // Only recurse into geometry arrays\n    if (Array.isArray(val.geometry)) {\n      box = val.geometry.reduce(\n        (acc, item) => mergeBoxes(acc, recurse(item)),\n        box\n      );\n    }\n    // If this is an array, recurse into each item\n    if (Array.isArray(val)) {\n      box = val.reduce((acc, item) => mergeBoxes(acc, recurse(item)), box);\n    }\n    return box;\n  }\n\n  return recurse(obj);\n}\n\nfunction getBoundingBoxSize(bbox) {\n  if (!Array.isArray(bbox) || bbox.length < 6) return null;\n  const width = bbox[3] - bbox[0];\n  const height = bbox[4] - bbox[1];\n  return { width, height };\n}\n\nconst boundingBox= getBoundingBox(importedShape)\nconsole.log(boundingBox)\nconst boundingBoxSize= getBoundingBoxSize(boundingBox)\nconsole.log(boundingBoxSize)\n\n//let assembly = await Assembly([importedShape, cylObj]);\nreturn boundingBoxSize.height + margin;\n"
     },
     {
       "atomType": "Move",
-      "x": 0.5173333333333333,
-      "y": 0.4561933534743203,
+      "x": 0.55,
+      "y": 0.4833836858006042,
       "uniqueID": "id-956",
       "ioValues": [
         {
@@ -161,8 +162,8 @@
     },
     {
       "atomType": "Extrude",
-      "x": 0.2693333333333333,
-      "y": 0.43202416918429004,
+      "x": 0.2826666666666667,
+      "y": 0.3867069486404834,
       "uniqueID": "id-962",
       "ioValues": [
         {
@@ -191,8 +192,8 @@
     },
     {
       "atomType": "Difference",
-      "x": 0.8,
-      "y": 0.3202416918429003,
+      "x": 0.782,
+      "y": 0.2084592145015106,
       "uniqueID": "id-970",
       "ioValues": [
         {
@@ -207,36 +208,36 @@
     },
     {
       "atomType": "Equation",
-      "x": 0.4853333333333334,
-      "y": 0.22960725075528698,
+      "x": 0.4886666666666667,
+      "y": 0.1782477341389728,
       "uniqueID": "id-977",
       "name": "-x/2 + y/2",
       "ioValues": [
         {
           "name": "x",
-          "ioValue": 406.11328325
+          "ioValue": 407.11328325
         },
         {
           "name": "y",
-          "ioValue": 100
+          "ioValue": 101
         }
       ],
       "currentEquation": "-x/2 + y/2"
     },
     {
       "atomType": "Equation",
-      "x": 0.4173333333333334,
-      "y": 0.6525679758308157,
+      "x": 0.4366666666666667,
+      "y": 0.4682779456193354,
       "uniqueID": "id-981",
       "name": "-y/2 + x/2",
       "ioValues": [
         {
           "name": "y",
-          "ioValue": 130.390627
+          "ioValue": 131.390627
         },
         {
           "name": "x",
-          "ioValue": 100
+          "ioValue": 101
         }
       ],
       "currentEquation": "-y/2 + x/2"
@@ -250,8 +251,8 @@
     },
     {
       "atomType": "Gcode",
-      "x": 0.8978300180831827,
-      "y": 0.6737160120845921,
+      "x": 0.898,
+      "y": 0.5830815709969788,
       "uniqueID": "id-997",
       "ioValues": [
         {
@@ -285,8 +286,8 @@
     },
     {
       "atomType": "Readme",
-      "x": 0.816,
-      "y": 0.5800604229607251,
+      "x": 0.8053333333333333,
+      "y": 0.47129909365558914,
       "uniqueID": "id-1326",
       "name": "README",
       "ioValues": [
@@ -300,8 +301,8 @@
     },
     {
       "atomType": "Export",
-      "x": 0.7412371134020619,
-      "y": 0.851963746223565,
+      "x": 0.722,
+      "y": 0.8459214501510574,
       "uniqueID": "id-1522",
       "ioValues": [
         {
@@ -374,18 +375,18 @@
     },
     {
       "atomType": "GitHubMolecule",
-      "x": 0.6746666666666666,
-      "y": 0.10876132930513595,
+      "x": 0.636,
+      "y": 0.18429003021148035,
       "uniqueID": "id-906",
       "name": "Rounded-rectangle-rep",
       "ioValues": [
         {
           "name": "width",
-          "ioValue": 406.11328325
+          "ioValue": 407.11328325
         },
         {
           "name": "length",
-          "ioValue": 130.390627
+          "ioValue": 131.390627
         },
         {
           "name": "radius",
@@ -422,7 +423,7 @@
             },
             {
               "name": "width",
-              "ioValue": 406.11328325
+              "ioValue": 407.11328325
             },
             {
               "name": "rad",
@@ -430,7 +431,7 @@
             },
             {
               "name": "length",
-              "ioValue": 130.390627
+              "ioValue": 131.390627
             }
           ],
           "codeVersion": 1,
@@ -527,8 +528,8 @@
     },
     {
       "atomType": "GitHubMolecule",
-      "x": 0.6666666666666666,
-      "y": 0.5800604229607251,
+      "x": 0.6733333333333333,
+      "y": 0.5830815709969788,
       "uniqueID": "id-1633",
       "name": "Get-Dimensions",
       "ioValues": [
@@ -684,13 +685,13 @@
     },
     {
       "atomType": "Circle",
-      "x": 0.18066666666666667,
-      "y": 0.879154078549849,
+      "x": 0.256,
+      "y": 0.8549848942598186,
       "uniqueID": "id-1827",
       "ioValues": [
         {
           "name": "diameter",
-          "ioValue": 406.11328325
+          "ioValue": 407.11328325
         }
       ]
     },
@@ -712,8 +713,8 @@
     },
     {
       "atomType": "Readme",
-      "x": 0.8140000000000001,
-      "y": 0.8459214501510574,
+      "x": 0.8186666666666667,
+      "y": 0.8308157099697885,
       "uniqueID": "id-1835",
       "name": "README",
       "ioValues": [
