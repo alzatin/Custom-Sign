@@ -6,9 +6,9 @@
 
 
 
- Project Width
+ Project Dimensions
 
-**Value:** 406.11329324999997
+**Value:** Width: 406.11329324999997, Height: 130.390637
 
 
 
