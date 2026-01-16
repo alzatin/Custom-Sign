@@ -422,10 +422,14 @@
     {
       "atomType": "Input",
       "x": 0.0264,
-      "y": 0.8610271903323262,
+      "y": 0.8217522658610272,
       "uniqueID": "id-1938",
       "name": "Font",
-      "type": "array"
+      "type": "array",
+      "options": [
+        "ROBOTO",
+        "ANTON"
+      ]
     },
     {
       "atomType": "GitHubMolecule",
