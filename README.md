@@ -12,5 +12,7 @@
 
 Default Font: ANTON
 
+**Value:** __GEOMETRY_INPUT__
+
 
 

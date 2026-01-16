@@ -20,8 +20,7 @@
     },
     {
       "name": "Margin",
-      "ioValue": 101,
-      "currentEquation": "101"
+      "ioValue": 101
     },
     {
       "name": "RouterBitSize",
@@ -34,6 +33,10 @@
     {
       "name": "2DShape?",
       "ioValue": "__GEOMETRY_INPUT__"
+    },
+    {
+      "name": "Font",
+      "ioValue": 10
     }
   ],
   "topLevel": true,
@@ -374,6 +377,49 @@
       "code": "\n// Example Code\nconst Inputs = [\n  { inputName: \"shape\", type: \"geometry\", defaultValue: null },\n  { inputName: \"defaultShape\", type: \"geometry\", defaultValue: null },\n  { inputName: \"height\", type: \"number\", defaultValue: 10 }\n];\n\nlet importedShape = library[shape];\n\nif (importedShape){\n  console.log(\"Found a geometry input\")\n}\nelse{\n  importedShape = library[defaultShape];\n}\nlet newPlane = replicad.makePlane()\nlet circDraw = replicad.drawCircle(6)\nlet sketchCir = circDraw.sketchOnPlane(newPlane)\nlet cyl = sketchCir.extrude(height)\nlet cylObj = {\n  geometry: [cyl],\n  dimension: \"3D\",\n  tags: [\"createdCylinder\"],\n  color: \"#A3CE5B\",\n  plane: null,\n  bom: []\n};\n\nlet assembly = await Assembly([importedShape, cylObj]);\nreturn assembly;\n"
     },
     {
+      "atomType": "Circle",
+      "x": 0.25866666666666666,
+      "y": 0.8851963746223566,
+      "uniqueID": "id-1827",
+      "ioValues": [
+        {
+          "name": "diameter",
+          "ioValue": 407.11328325
+        }
+      ]
+    },
+    {
+      "atomType": "Extrude",
+      "x": 0.4786666666666667,
+      "y": 0.8580060422960726,
+      "uniqueID": "id-1830",
+      "ioValues": [
+        {
+          "name": "geometry",
+          "ioValue": "__GEOMETRY_INPUT__"
+        },
+        {
+          "name": "height",
+          "ioValue": 14
+        }
+      ]
+    },
+    {
+      "atomType": "Readme",
+      "x": 0.8226666666666667,
+      "y": 0.8066465256797584,
+      "uniqueID": "id-1835",
+      "name": "README",
+      "ioValues": [
+        {
+          "name": "value",
+          "ioValue": "__GEOMETRY_INPUT__"
+        }
+      ],
+      "readMeText": "Default Font: ANTON",
+      "global": true
+    },
+    {
       "atomType": "GitHubMolecule",
       "x": 0.636,
       "y": 0.18429003021148035,
@@ -684,47 +730,12 @@
       "fileTypeVersion": 1
     },
     {
-      "atomType": "Circle",
-      "x": 0.256,
-      "y": 0.8549848942598186,
-      "uniqueID": "id-1827",
-      "ioValues": [
-        {
-          "name": "diameter",
-          "ioValue": 407.11328325
-        }
-      ]
-    },
-    {
-      "atomType": "Extrude",
-      "x": 0.4786666666666667,
-      "y": 0.8580060422960726,
-      "uniqueID": "id-1830",
-      "ioValues": [
-        {
-          "name": "geometry",
-          "ioValue": "__GEOMETRY_INPUT__"
-        },
-        {
-          "name": "height",
-          "ioValue": 14
-        }
-      ]
-    },
-    {
-      "atomType": "Readme",
-      "x": 0.8186666666666667,
-      "y": 0.8308157099697885,
-      "uniqueID": "id-1835",
-      "name": "README",
-      "ioValues": [
-        {
-          "name": "value",
-          "ioValue": "__GEOMETRY_INPUT__"
-        }
-      ],
-      "readMeText": "Default Font: ANTON",
-      "global": true
+      "atomType": "Input",
+      "x": 0.0264,
+      "y": 0.8319999999999999,
+      "uniqueID": "id-1938",
+      "name": "Font",
+      "type": "array"
     }
   ],
   "allConnectors": [
@@ -879,6 +890,11 @@
       "ap2ID": "id-970"
     },
     {
+      "ap2Name": "shape",
+      "ap1ID": "id-1830",
+      "ap2ID": "id-1727"
+    },
+    {
       "ap2Name": "defaultShape",
       "ap1ID": "id-906",
       "ap2ID": "id-1727"
@@ -887,11 +903,6 @@
       "ap2Name": "value",
       "ap1ID": "id-1633",
       "ap2ID": "id-1326"
-    },
-    {
-      "ap2Name": "shape",
-      "ap1ID": "id-1830",
-      "ap2ID": "id-1727"
     }
   ],
   "unitsKey": "MM",
