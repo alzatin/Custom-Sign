@@ -12,7 +12,8 @@
     },
     {
       "name": "Font_Size",
-      "ioValue": 10
+      "ioValue": 50,
+      "currentEquation": "50"
     },
     {
       "name": "ply_thickness",
@@ -52,18 +53,18 @@
     },
     {
       "atomType": "GitHubMolecule",
-      "x": 0.6494140625,
-      "y": 0.4924471299093656,
+      "x": 0.66015625,
+      "y": 0.4380664652567976,
       "uniqueID": "id-906",
       "name": "Rounded-rectangle-rep",
       "ioValues": [
         {
           "name": "width",
-          "ioValue": 40.478517624999995
+          "ioValue": 202.392580125
         },
         {
           "name": "length",
-          "ioValue": 9.23828325
+          "ioValue": 46.191408249999995
         },
         {
           "name": "radius",
@@ -100,7 +101,7 @@
             },
             {
               "name": "width",
-              "ioValue": 40.478517624999995
+              "ioValue": 202.392580125
             },
             {
               "name": "rad",
@@ -108,7 +109,7 @@
             },
             {
               "name": "length",
-              "ioValue": 9.23828325
+              "ioValue": 46.191408249999995
             }
           ],
           "codeVersion": 1,
@@ -218,7 +219,7 @@
       "ioValues": [
         {
           "name": "Font Size",
-          "ioValue": 10
+          "ioValue": 50
         },
         {
           "name": "Text",
@@ -231,8 +232,8 @@
     },
     {
       "atomType": "Code",
-      "x": 0.4921875,
-      "y": 0.1299093655589124,
+      "x": 0.49414062500000006,
+      "y": 0.11480362537764349,
       "uniqueID": "id-939",
       "ioValues": [
         {
@@ -272,6 +273,77 @@
       ],
       "codeVersion": 1,
       "code": "\n// Example Code\nconst Inputs = [\n  { inputName: \"shape\", type: \"geometry\", defaultValue: null },\n  { inputName: \"radius\", type: \"number\", defaultValue: 5 },\n  { inputName: \"height\", type: \"number\", defaultValue: 10 }\n];\n\n\nlet importedShape = library[shape];\nconsole.log(importedShape)\n\nfunction extractBox(boxObj) {\n  if (!boxObj) return null;\n  // If bounds is an array of two arrays\n  if (\n    Array.isArray(boxObj.bounds) &&\n    boxObj.bounds.length === 2 &&\n    Array.isArray(boxObj.bounds[0]) &&\n    Array.isArray(boxObj.bounds[1])\n  ) {\n    const [min, max] = boxObj.bounds;\n    // 2D: [minX, minY, minZ, maxX, maxY, maxZ]\n    return [min[0], min[1], 0, max[0], max[1], 0];\n  }\n  // If _wrapped has a bounds property\n  if (\n    boxObj._wrapped &&\n    Array.isArray(boxObj._wrapped.bounds) &&\n    boxObj._wrapped.bounds.length === 2 &&\n    Array.isArray(boxObj._wrapped.bounds[0]) &&\n    Array.isArray(boxObj._wrapped.bounds[1])\n  ) {\n    const [min, max] = boxObj._wrapped.bounds;\n    return [min[0], min[1], 0, max[0], max[1], 0];\n  }\n  return null;\n}\n\nfunction getBoundingBox(obj) {\n  const visited = new Set();\n\n  function mergeBoxes(a, b) {\n    if (!a) return b;\n    if (!b) return a;\n    return [\n      Math.min(a[0], b[0]),\n      Math.min(a[1], b[1]),\n      Math.min(a[2], b[2]),\n      Math.max(a[3], b[3]),\n      Math.max(a[4], b[4]),\n      Math.max(a[5], b[5]),\n    ];\n  }\n\n  function recurse(val) {\n    if (!val || typeof val !== \"object\") return null;\n    if (visited.has(val)) return null;\n    visited.add(val);\n\n    // Try to extract bounding box from _boundingBox or boundingBox\n    let box = extractBox(val._boundingBox) || extractBox(val.boundingBox);\n    // Only recurse into geometry arrays\n    if (Array.isArray(val.geometry)) {\n      box = val.geometry.reduce(\n        (acc, item) => mergeBoxes(acc, recurse(item)),\n        box\n      );\n    }\n    // If this is an array, recurse into each item\n    if (Array.isArray(val)) {\n      box = val.reduce((acc, item) => mergeBoxes(acc, recurse(item)), box);\n    }\n    return box;\n  }\n\n  return recurse(obj);\n}\n\nfunction getBoundingBoxSize(bbox) {\n  if (!Array.isArray(bbox) || bbox.length < 6) return null;\n  const width = bbox[3] - bbox[0];\n  const height = bbox[4] - bbox[1];\n  return { width, height };\n}\n\nconst boundingBox= getBoundingBox(importedShape)\nconsole.log(boundingBox)\nconst boundingBoxSize= getBoundingBoxSize(boundingBox)\nconsole.log(boundingBoxSize)\n\n//let assembly = await Assembly([importedShape, cylObj]);\nreturn boundingBoxSize.height;\n"
+    },
+    {
+      "atomType": "Move",
+      "x": 0.5908203125,
+      "y": 0.7250755287009063,
+      "uniqueID": "id-956",
+      "ioValues": [
+        {
+          "name": "geometry",
+          "ioValue": "__GEOMETRY_INPUT__"
+        },
+        {
+          "name": "xDist",
+          "ioValue": 0
+        },
+        {
+          "name": "yDist",
+          "ioValue": 0
+        },
+        {
+          "name": "zDist",
+          "ioValue": 5
+        }
+      ]
+    },
+    {
+      "atomType": "Extrude",
+      "x": 0.36328124999999994,
+      "y": 0.5649546827794562,
+      "uniqueID": "id-962",
+      "ioValues": [
+        {
+          "name": "geometry",
+          "ioValue": "__GEOMETRY_INPUT__"
+        },
+        {
+          "name": "height",
+          "ioValue": 10
+        }
+      ]
+    },
+    {
+      "atomType": "Equation",
+      "x": 0.22265625,
+      "y": 0.770392749244713,
+      "uniqueID": "id-966",
+      "name": "x/2",
+      "ioValues": [
+        {
+          "name": "x",
+          "ioValue": 10,
+          "currentEquation": "1"
+        }
+      ],
+      "currentEquation": "x/2"
+    },
+    {
+      "atomType": "Difference",
+      "x": 0.728515625,
+      "y": 0.676737160120846,
+      "uniqueID": "id-970",
+      "ioValues": [
+        {
+          "name": "geometry1",
+          "ioValue": "__GEOMETRY_INPUT__"
+        },
+        {
+          "name": "geometry2",
+          "ioValue": "__GEOMETRY_INPUT__"
+        }
+      ]
     }
   ],
   "allConnectors": [
@@ -286,9 +358,19 @@
       "ap2ID": "id-928"
     },
     {
+      "ap2Name": "geometry1",
+      "ap1ID": "id-906",
+      "ap2ID": "id-970"
+    },
+    {
       "ap2Name": "height",
       "ap1ID": "id-924",
       "ap2ID": "id-906"
+    },
+    {
+      "ap2Name": "x",
+      "ap1ID": "id-924",
+      "ap2ID": "id-966"
     },
     {
       "ap2Name": "shape",
@@ -301,6 +383,11 @@
       "ap2ID": "id-950"
     },
     {
+      "ap2Name": "geometry",
+      "ap1ID": "id-928",
+      "ap2ID": "id-962"
+    },
+    {
       "ap2Name": "width",
       "ap1ID": "id-939",
       "ap2ID": "id-906"
@@ -309,6 +396,21 @@
       "ap2Name": "length",
       "ap1ID": "id-950",
       "ap2ID": "id-906"
+    },
+    {
+      "ap2Name": "geometry2",
+      "ap1ID": "id-956",
+      "ap2ID": "id-970"
+    },
+    {
+      "ap2Name": "geometry",
+      "ap1ID": "id-962",
+      "ap2ID": "id-956"
+    },
+    {
+      "ap2Name": "zDist",
+      "ap1ID": "id-966",
+      "ap2ID": "id-956"
     }
   ],
   "unitsKey": "MM",
