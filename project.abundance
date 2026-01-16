@@ -78,8 +78,8 @@
     },
     {
       "atomType": "Text",
-      "x": 0.1906854130052724,
-      "y": 0.24471299093655588,
+      "x": 0.17311072056239016,
+      "y": 0.23564954682779457,
       "uniqueID": "id-928",
       "ioValues": [
         {
@@ -92,7 +92,7 @@
           "currentEquation": "Lorem Ipsum"
         }
       ],
-      "fontFamily": "ROBOTO",
+      "fontFamily": "ANTON",
       "selectedFontIndex": 0
     },
     {
@@ -151,11 +151,11 @@
         },
         {
           "name": "xDist",
-          "ioValue": -153.056641625
+          "ioValue": -154.23828225
         },
         {
           "name": "yDist",
-          "ioValue": -15.195313499999997
+          "ioValue": -17.451172874999997
         },
         {
           "name": "zDist",
@@ -218,7 +218,7 @@
       "ioValues": [
         {
           "name": "x",
-          "ioValue": 407.11328325
+          "ioValue": 409.4765645
         },
         {
           "name": "y",
@@ -236,7 +236,7 @@
       "ioValues": [
         {
           "name": "y",
-          "ioValue": 131.390627
+          "ioValue": 135.90234575
         },
         {
           "name": "x",
@@ -378,13 +378,13 @@
     },
     {
       "atomType": "Circle",
-      "x": 0.27768014059753954,
-      "y": 0.7522658610271903,
+      "x": 0.2750439367311072,
+      "y": 0.7613293051359517,
       "uniqueID": "id-1827",
       "ioValues": [
         {
           "name": "diameter",
-          "ioValue": 407.11328325
+          "ioValue": 409.4765645
         }
       ]
     },
@@ -440,11 +440,11 @@
       "ioValues": [
         {
           "name": "width",
-          "ioValue": 407.11328325
+          "ioValue": 409.4765645
         },
         {
           "name": "length",
-          "ioValue": 131.390627
+          "ioValue": 135.90234575
         },
         {
           "name": "radius",
@@ -481,7 +481,7 @@
             },
             {
               "name": "width",
-              "ioValue": 407.11328325
+              "ioValue": 409.4765645
             },
             {
               "name": "rad",
@@ -489,7 +489,7 @@
             },
             {
               "name": "length",
-              "ioValue": 131.390627
+              "ioValue": 135.90234575
             }
           ],
           "codeVersion": 1,

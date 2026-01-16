@@ -8,7 +8,7 @@
 
  Project Dimensions
 
-**Value:** Width: 407.11329324999997, Height: 131.390637
+**Value:** Width: 409.47657449999997, Height: 135.90235575
 
 Default Font: ANTON
 
