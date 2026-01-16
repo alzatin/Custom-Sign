@@ -78,8 +78,8 @@
     },
     {
       "atomType": "Text",
-      "x": 0.18466666666666667,
-      "y": 0.21450151057401814,
+      "x": 0.1906854130052724,
+      "y": 0.24471299093655588,
       "uniqueID": "id-928",
       "ioValues": [
         {
@@ -378,8 +378,8 @@
     },
     {
       "atomType": "Circle",
-      "x": 0.25866666666666666,
-      "y": 0.8851963746223566,
+      "x": 0.27768014059753954,
+      "y": 0.7522658610271903,
       "uniqueID": "id-1827",
       "ioValues": [
         {
@@ -418,6 +418,14 @@
       ],
       "readMeText": "Default Font: ANTON",
       "global": true
+    },
+    {
+      "atomType": "Input",
+      "x": 0.0264,
+      "y": 0.8610271903323262,
+      "uniqueID": "id-1938",
+      "name": "Font",
+      "type": "array"
     },
     {
       "atomType": "GitHubMolecule",
@@ -728,14 +736,6 @@
       },
       "unitsKey": "Unitless",
       "fileTypeVersion": 1
-    },
-    {
-      "atomType": "Input",
-      "x": 0.0264,
-      "y": 0.8319999999999999,
-      "uniqueID": "id-1938",
-      "name": "Font",
-      "type": "array"
     }
   ],
   "allConnectors": [
