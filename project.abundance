@@ -12,7 +12,8 @@
     },
     {
       "name": "Font_Size",
-      "ioValue": 60
+      "ioValue": 40,
+      "currentEquation": "40"
     },
     {
       "name": "ply_thickness",
@@ -76,7 +77,7 @@
       "ioValues": [
         {
           "name": "Font Size",
-          "ioValue": 60
+          "ioValue": 40
         },
         {
           "name": "Text",
@@ -133,8 +134,8 @@
     },
     {
       "atomType": "Move",
-      "x": 0.5880000000000001,
-      "y": 0.5166163141993958,
+      "x": 0.5917525773195876,
+      "y": 0.513595166163142,
       "uniqueID": "id-956",
       "ioValues": [
         {
@@ -143,11 +144,11 @@
         },
         {
           "name": "xDist",
-          "ioValue": -229.5849619375
+          "ioValue": -153.056641625
         },
         {
           "name": "yDist",
-          "ioValue": -22.792969749999997
+          "ioValue": -15.195313499999997
         },
         {
           "name": "zDist",
@@ -210,7 +211,7 @@
       "ioValues": [
         {
           "name": "x",
-          "ioValue": 559.169923875
+          "ioValue": 406.11328325
         },
         {
           "name": "y",
@@ -228,7 +229,7 @@
       "ioValues": [
         {
           "name": "y",
-          "ioValue": 145.5859395
+          "ioValue": 130.390627
         },
         {
           "name": "x",
@@ -281,8 +282,8 @@
     },
     {
       "atomType": "Readme",
-      "x": 0.8123711340206186,
-      "y": 0.8066465256797584,
+      "x": 0.8175257731958763,
+      "y": 0.7945619335347432,
       "uniqueID": "id-1326",
       "name": "README",
       "ioValues": [
@@ -291,13 +292,13 @@
           "ioValue": "__GEOMETRY_INPUT__"
         }
       ],
-      "readMeText": "Project Width2",
+      "readMeText": "Project Width",
       "global": true
     },
     {
       "atomType": "Export",
-      "x": 0.6845360824742268,
-      "y": 0.8882175226586102,
+      "x": 0.7412371134020619,
+      "y": 0.851963746223565,
       "uniqueID": "id-1522",
       "ioValues": [
         {
@@ -347,11 +348,11 @@
       "ioValues": [
         {
           "name": "width",
-          "ioValue": 559.169923875
+          "ioValue": 406.11328325
         },
         {
           "name": "length",
-          "ioValue": 145.5859395
+          "ioValue": 130.390627
         },
         {
           "name": "radius",
@@ -388,7 +389,7 @@
             },
             {
               "name": "width",
-              "ioValue": 559.169923875
+              "ioValue": 406.11328325
             },
             {
               "name": "rad",
@@ -396,7 +397,7 @@
             },
             {
               "name": "length",
-              "ioValue": 145.5859395
+              "ioValue": 130.390627
             }
           ],
           "codeVersion": 1,
@@ -493,8 +494,8 @@
     },
     {
       "atomType": "GitHubMolecule",
-      "x": 0.6350515463917525,
-      "y": 0.7341389728096678,
+      "x": 0.7030927835051546,
+      "y": 0.5619335347432024,
       "uniqueID": "id-1436",
       "name": "Get-Width",
       "ioValues": [
