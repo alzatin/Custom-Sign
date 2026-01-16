@@ -36,7 +36,8 @@
     },
     {
       "name": "Font",
-      "ioValue": 10
+      "ioValue": "ANTON",
+      "currentEquation": "ANTON"
     }
   ],
   "topLevel": true,
@@ -78,8 +79,8 @@
     },
     {
       "atomType": "Text",
-      "x": 0.17311072056239016,
-      "y": 0.23564954682779457,
+      "x": 0.20650263620386644,
+      "y": 0.1903323262839879,
       "uniqueID": "id-928",
       "ioValues": [
         {
@@ -141,8 +142,8 @@
     },
     {
       "atomType": "Move",
-      "x": 0.55,
-      "y": 0.4833836858006042,
+      "x": 0.6036906854130053,
+      "y": 0.4350453172205438,
       "uniqueID": "id-956",
       "ioValues": [
         {
@@ -181,8 +182,8 @@
     },
     {
       "atomType": "Equation",
-      "x": 0.20933333333333332,
-      "y": 0.5558912386706948,
+      "x": 0.2671353251318102,
+      "y": 0.5377643504531722,
       "uniqueID": "id-966",
       "name": "x/2",
       "ioValues": [
@@ -229,8 +230,8 @@
     },
     {
       "atomType": "Equation",
-      "x": 0.4366666666666667,
-      "y": 0.4682779456193354,
+      "x": 0.4657293497363796,
+      "y": 0.46223564954682783,
       "uniqueID": "id-981",
       "name": "-y/2 + x/2",
       "ioValues": [
@@ -378,8 +379,8 @@
     },
     {
       "atomType": "Circle",
-      "x": 0.2750439367311072,
-      "y": 0.7613293051359517,
+      "x": 0.38752196836555364,
+      "y": 0.6344410876132931,
       "uniqueID": "id-1827",
       "ioValues": [
         {
@@ -422,7 +423,7 @@
     {
       "atomType": "Input",
       "x": 0.0264,
-      "y": 0.8319999999999999,
+      "y": 0.8308157099697885,
       "uniqueID": "id-1938",
       "name": "Font",
       "type": "array",
@@ -740,6 +741,28 @@
       },
       "unitsKey": "Unitless",
       "fileTypeVersion": 1
+    },
+    {
+      "atomType": "Code",
+      "x": 0.2548330404217926,
+      "y": 0.8066465256797584,
+      "uniqueID": "id-2048",
+      "ioValues": [
+        {
+          "name": "radius",
+          "ioValue": 5
+        },
+        {
+          "name": "height",
+          "ioValue": 10
+        },
+        {
+          "name": "shapetype",
+          "ioValue": "__GEOMETRY_INPUT__"
+        }
+      ],
+      "codeVersion": 1,
+      "code": "\n// Example Code\nconst Inputs = [\n  { inputName: \"shapetype\", type: \"geometry\", defaultValue: null },\n  { inputName: \"radius\", type: \"number\", defaultValue: 6 },\n  { inputName: \"height\", type: \"number\", defaultValue: 10 }\n];\n\nlet importedShape = library[shape];\nlet newPlane = replicad.makePlane()\nlet circDraw = replicad.drawCircle(radius)\nlet sketchCir = circDraw.sketchOnPlane(newPlane)\nlet cyl = sketchCir.extrude(height)\nlet cylObj = {\n  geometry: [cyl],\n  dimension: \"3D\",\n  tags: [\"createdcirc\"],\n  color: \"#A3CE5B\",\n  plane: null,\n  bom: []\n};\n\n//let assembly = await Assembly([importedShape, cylObj]);\nreturn cylObj;\n"
     }
   ],
   "allConnectors": [
