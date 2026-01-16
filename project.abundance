@@ -29,6 +29,10 @@
     {
       "name": "GCPasses",
       "ioValue": 2
+    },
+    {
+      "name": "Shape?",
+      "ioValue": "__GEOMETRY_INPUT__"
     }
   ],
   "topLevel": true,
@@ -340,8 +344,8 @@
     },
     {
       "atomType": "GitHubMolecule",
-      "x": 0.6752577319587629,
-      "y": 0.14501510574018128,
+      "x": 0.6813333333333333,
+      "y": 0.16012084592145015,
       "uniqueID": "id-906",
       "name": "Rounded-rectangle-rep",
       "ioValues": [
@@ -647,6 +651,36 @@
       },
       "unitsKey": "Unitless",
       "fileTypeVersion": 1
+    },
+    {
+      "atomType": "Input",
+      "x": 0.0264,
+      "y": 0.7359999999999999,
+      "uniqueID": "id-1724",
+      "name": "Shape?",
+      "type": "geometry"
+    },
+    {
+      "atomType": "Code",
+      "x": 0.6066666666666667,
+      "y": 0.8096676737160121,
+      "uniqueID": "id-1727",
+      "ioValues": [
+        {
+          "name": "shape",
+          "ioValue": "__GEOMETRY_INPUT__"
+        },
+        {
+          "name": "radius",
+          "ioValue": 5
+        },
+        {
+          "name": "height",
+          "ioValue": 10
+        }
+      ],
+      "codeVersion": 1,
+      "code": "\n// Example Code\nconst Inputs = [\n  { inputName: \"shape\", type: \"geometry\", defaultValue: null },\n  { inputName: \"radius\", type: \"number\", defaultValue: 5 },\n  { inputName: \"height\", type: \"number\", defaultValue: 10 }\n];\n\nlet importedShape = library[shape];\nlet newPlane = replicad.makePlane()\nlet circDraw = replicad.drawCircle(radius)\nlet sketchCir = circDraw.sketchOnPlane(newPlane)\nlet cyl = sketchCir.extrude(height)\nlet cylObj = {\n  geometry: [cyl],\n  dimension: \"3D\",\n  tags: [\"createdCylinder\"],\n  color: \"#A3CE5B\",\n  plane: null,\n  bom: []\n};\n\nlet assembly = await Assembly([importedShape, cylObj]);\nreturn assembly;\n"
     }
   ],
   "allConnectors": [
