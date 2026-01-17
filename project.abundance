@@ -16,7 +16,8 @@
     },
     {
       "name": "ply_thickness",
-      "ioValue": 14
+      "ioValue": 14,
+      "currentEquation": "14"
     },
     {
       "name": "Margin",
@@ -80,8 +81,8 @@
     },
     {
       "atomType": "Text",
-      "x": 0.20474516695957823,
-      "y": 0.1903323262839879,
+      "x": 0.182,
+      "y": 0.7643504531722054,
       "uniqueID": "id-928",
       "ioValues": [
         {
@@ -172,8 +173,8 @@
     },
     {
       "atomType": "Extrude",
-      "x": 0.2826666666666667,
-      "y": 0.3867069486404834,
+      "x": 0.2793333333333333,
+      "y": 0.6525679758308157,
       "uniqueID": "id-962",
       "ioValues": [
         {
@@ -188,8 +189,8 @@
     },
     {
       "atomType": "Equation",
-      "x": 0.2671353251318102,
-      "y": 0.5377643504531722,
+      "x": 0.182,
+      "y": 0.5347432024169184,
       "uniqueID": "id-966",
       "name": "x/2",
       "ioValues": [
@@ -202,8 +203,8 @@
     },
     {
       "atomType": "Difference",
-      "x": 0.7838312829525483,
-      "y": 0.2175226586102719,
+      "x": 0.6880000000000001,
+      "y": 0.4803625377643504,
       "uniqueID": "id-970",
       "ioValues": [
         {
@@ -296,8 +297,8 @@
     },
     {
       "atomType": "Readme",
-      "x": 0.8857644991212654,
-      "y": 0.19939577039274922,
+      "x": 0.81,
+      "y": 0.3595166163141994,
       "uniqueID": "id-1326",
       "name": "README",
       "ioValues": [
@@ -445,30 +446,6 @@
       ],
       "codeVersion": 1,
       "code": "\n// Example Code\nconst Inputs = [\n  { inputName: \"shapetype\", type: \"string\", defaultValue: \"rect\" },\n  { inputName: \"radius\", type: \"number\", defaultValue: 6 },\n  { inputName: \"width\", type: \"number\", defaultValue: 10 },\n  { inputName: \"height\", type: \"number\", defaultValue: 10 },\n  { inputName: \"thick\", type: \"number\", defaultValue: 10 }\n];\n\n//let importedShape = library[shape];\nlet newPlane = replicad.makePlane()\nlet circDraw\nif(shapetype == \"circle\"){\ncircDraw = replicad.drawCircle(radius/2)\n}\nelse if(shapetype == \"hexagon\"){\n  circDraw = replicad.drawPolysides(radius/1.5, 6, 1)\n}\nelse {\n  circDraw = replicad.drawRoundedRectangle(width, height, 1)\n}\nlet sketchCir = circDraw.sketchOnPlane(newPlane)\nlet cyl = sketchCir.extrude(thick)\nlet cylObj = {\n  geometry: [cyl],\n  dimension: \"3D\",\n  tags: [\"createdcirc\"],\n  color: \"#A3CE5B\",\n  plane: null,\n  bom: []\n};\n\n//let assembly = await Assembly([importedShape, cylObj]);\nreturn cylObj;\n"
-    },
-    {
-      "atomType": "Text",
-      "x": 0.24340949033391918,
-      "y": 0.716012084592145,
-      "uniqueID": "id-2158",
-      "ioValues": [
-        {
-          "name": "Font Size",
-          "ioValue": 10
-        },
-        {
-          "name": "Text",
-          "ioValue": "Lorem Ipsum",
-          "currentEquation": "Lorem Ipsum"
-        },
-        {
-          "name": "Font Family",
-          "ioValue": "AGUAFINA",
-          "currentEquation": "AGUAFINA"
-        }
-      ],
-      "fontFamily": "AGUAFINA",
-      "selectedFontIndex": 5
     },
     {
       "atomType": "GitHubMolecule",
@@ -625,8 +602,8 @@
     },
     {
       "atomType": "GitHubMolecule",
-      "x": 0.8154657293497364,
-      "y": 0.48942598187311176,
+      "x": 0.7506666666666667,
+      "y": 0.23564954682779457,
       "uniqueID": "id-1633",
       "name": "Get-Dimensions",
       "ioValues": [
@@ -792,6 +769,21 @@
       "uniqueID": "id-2271",
       "name": "bool",
       "type": "boolean"
+    },
+    {
+      "atomType": "Readme",
+      "x": 0.9313333333333332,
+      "y": 0.8670694864048338,
+      "uniqueID": "id-2275",
+      "name": "README",
+      "ioValues": [
+        {
+          "name": "value",
+          "ioValue": "__GEOMETRY_INPUT__"
+        }
+      ],
+      "readMeText": "Inputs: - Text { the string of text you want to appear on the sign} - Font_Size { your desired font size} - ply-thickness {the wood thickness you want to cut the sign from} - Margin {the margin you want the text to have from its border} - RouterBitSize {the bit size you want to cut with} - GC passes {number of gcode passes} - 2D shape {alternative shapes for your sign} - Font {available font options for your text} ",
+      "global": true
     }
   ],
   "allConnectors": [
