@@ -31,7 +31,7 @@
       "ioValue": 2
     },
     {
-      "name": "2DShape?",
+      "name": "2DShape",
       "ioValue": "hexagon",
       "currentEquation": "hexagon"
     },
@@ -356,9 +356,9 @@
     {
       "atomType": "Input",
       "x": 0.0264,
-      "y": 0.7359999999999999,
+      "y": 0.7341389728096678,
       "uniqueID": "id-1724",
-      "name": "2DShape?",
+      "name": "2DShape",
       "type": "array",
       "options": [
         "rectangle",
@@ -418,7 +418,7 @@
     {
       "atomType": "Input",
       "x": 0.0264,
-      "y": 0.8549848942598186,
+      "y": 0.8398791540785498,
       "uniqueID": "id-1938",
       "name": "Font",
       "type": "array",
@@ -427,7 +427,8 @@
         "ANTON",
         "AGUAFINA",
         "PACIFICO",
-        "NOTOSANS"
+        "NOTOSANS",
+        "GREAT_VIBES"
       ]
     },
     {
@@ -459,6 +460,30 @@
       ],
       "codeVersion": 1,
       "code": "\n// Example Code\nconst Inputs = [\n  { inputName: \"shapetype\", type: \"string\", defaultValue: \"rect\" },\n  { inputName: \"radius\", type: \"number\", defaultValue: 6 },\n  { inputName: \"width\", type: \"number\", defaultValue: 10 },\n  { inputName: \"height\", type: \"number\", defaultValue: 10 },\n  { inputName: \"thick\", type: \"number\", defaultValue: 10 }\n];\n\n//let importedShape = library[shape];\nlet newPlane = replicad.makePlane()\nlet circDraw\nif(shapetype == \"circle\"){\ncircDraw = replicad.drawCircle(radius/2)\n}\nelse if(shapetype == \"hexagon\"){\n  circDraw = replicad.drawPolysides(radius/1.5, 6, 1)\n}\nelse {\n  circDraw = replicad.drawRoundedRectangle(width, height, 1)\n}\nlet sketchCir = circDraw.sketchOnPlane(newPlane)\nlet cyl = sketchCir.extrude(thick)\nlet cylObj = {\n  geometry: [cyl],\n  dimension: \"3D\",\n  tags: [\"createdcirc\"],\n  color: \"#A3CE5B\",\n  plane: null,\n  bom: []\n};\n\n//let assembly = await Assembly([importedShape, cylObj]);\nreturn cylObj;\n"
+    },
+    {
+      "atomType": "Text",
+      "x": 0.24340949033391918,
+      "y": 0.716012084592145,
+      "uniqueID": "id-2158",
+      "ioValues": [
+        {
+          "name": "Font Size",
+          "ioValue": 10
+        },
+        {
+          "name": "Text",
+          "ioValue": "Lorem Ipsum",
+          "currentEquation": "Lorem Ipsum"
+        },
+        {
+          "name": "Font Family",
+          "ioValue": "AGUAFINA",
+          "currentEquation": "AGUAFINA"
+        }
+      ],
+      "fontFamily": "AGUAFINA",
+      "selectedFontIndex": 5
     },
     {
       "atomType": "GitHubMolecule",
@@ -774,30 +799,6 @@
       },
       "unitsKey": "Unitless",
       "fileTypeVersion": 1
-    },
-    {
-      "atomType": "Text",
-      "x": 0.24340949033391918,
-      "y": 0.716012084592145,
-      "uniqueID": "id-2158",
-      "ioValues": [
-        {
-          "name": "Font Size",
-          "ioValue": 10
-        },
-        {
-          "name": "Text",
-          "ioValue": "Lorem Ipsum",
-          "currentEquation": "Lorem Ipsum"
-        },
-        {
-          "name": "Font Family",
-          "ioValue": "AGUAFINA",
-          "currentEquation": "AGUAFINA"
-        }
-      ],
-      "fontFamily": "AGUAFINA",
-      "selectedFontIndex": 5
     }
   ],
   "allConnectors": [
