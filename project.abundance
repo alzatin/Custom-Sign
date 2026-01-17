@@ -39,6 +39,10 @@
       "name": "Font",
       "ioValue": "ROBOTO",
       "currentEquation": "ROBOTO"
+    },
+    {
+      "name": "Screw_holes",
+      "ioValue": 10
     }
   ],
   "topLevel": true,
@@ -802,11 +806,15 @@
     },
     {
       "atomType": "Molecule",
-      "x": 0.38866666666666666,
-      "y": 0.879154078549849,
+      "x": 0.38064516129032255,
+      "y": 0.8700906344410876,
       "uniqueID": "id-2278",
       "name": "Screw holes",
       "ioValues": [
+        {
+          "name": "Screw_holes",
+          "ioValue": 10
+        },
         {
           "name": "ply_thickness",
           "ioValue": 14
@@ -1045,6 +1053,11 @@
             {
               "name": "shape",
               "ioValue": "__GEOMETRY_INPUT__"
+            },
+            {
+              "name": "bool",
+              "ioValue": 10,
+              "currentEquation": "False"
             }
           ],
           "codeVersion": 1,
@@ -1052,8 +1065,8 @@
         },
         {
           "atomType": "GitHubMolecule",
-          "x": 0.20733333333333334,
-          "y": 0.5287009063444109,
+          "x": 0.2032258064516129,
+          "y": 0.5075528700906344,
           "uniqueID": "id-2300",
           "name": "-6-Wood-Screw",
           "topLevel": false,
