@@ -12,7 +12,8 @@
     },
     {
       "name": "Font_Size",
-      "ioValue": 30
+      "ioValue": 45,
+      "currentEquation": "45"
     },
     {
       "name": "ply_thickness",
@@ -86,7 +87,7 @@
       "ioValues": [
         {
           "name": "Font Size",
-          "ioValue": 30
+          "ioValue": 45
         },
         {
           "name": "Text",
@@ -158,11 +159,11 @@
         },
         {
           "name": "xDist",
-          "ioValue": -114.79248146875
+          "ioValue": -172.188721703125
         },
         {
           "name": "yDist",
-          "ioValue": -11.396485375000001
+          "ioValue": -17.094727562499997
         },
         {
           "name": "zDist",
@@ -225,7 +226,7 @@
       "ioValues": [
         {
           "name": "x",
-          "ioValue": 249.5849629375
+          "ioValue": 364.37744340625
         },
         {
           "name": "y",
@@ -243,7 +244,7 @@
       "ioValues": [
         {
           "name": "y",
-          "ioValue": 42.79297075
+          "ioValue": 54.189455124999995
         },
         {
           "name": "x",
@@ -261,8 +262,8 @@
     },
     {
       "atomType": "Gcode",
-      "x": 0.9077328646748681,
-      "y": 0.595166163141994,
+      "x": 0.8760984182776801,
+      "y": 0.755287009063444,
       "uniqueID": "id-997",
       "ioValues": [
         {
@@ -396,7 +397,7 @@
       "ioValues": [
         {
           "name": "diameter",
-          "ioValue": 249.5849629375
+          "ioValue": 364.37744340625
         }
       ]
     },
@@ -424,11 +425,11 @@
       "ioValues": [
         {
           "name": "radius",
-          "ioValue": 249.5849629375
+          "ioValue": 364.37744340625
         },
         {
           "name": "height",
-          "ioValue": 42.79297075
+          "ioValue": 54.189455124999995
         },
         {
           "name": "shapetype",
@@ -436,7 +437,7 @@
         },
         {
           "name": "width",
-          "ioValue": 249.5849629375
+          "ioValue": 364.37744340625
         },
         {
           "name": "thick",
@@ -479,11 +480,11 @@
       "ioValues": [
         {
           "name": "width",
-          "ioValue": 249.5849629375
+          "ioValue": 364.37744340625
         },
         {
           "name": "length",
-          "ioValue": 42.79297075
+          "ioValue": 54.189455124999995
         },
         {
           "name": "radius",
@@ -520,7 +521,7 @@
             },
             {
               "name": "width",
-              "ioValue": 249.5849629375
+              "ioValue": 364.37744340625
             },
             {
               "name": "rad",
@@ -528,7 +529,7 @@
             },
             {
               "name": "length",
-              "ioValue": 42.79297075
+              "ioValue": 54.189455124999995
             }
           ],
           "codeVersion": 1,
