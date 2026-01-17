@@ -32,8 +32,8 @@
     },
     {
       "name": "2DShape",
-      "ioValue": "hexagon",
-      "currentEquation": "hexagon"
+      "ioValue": "circle",
+      "currentEquation": "circle"
     },
     {
       "name": "Font",
@@ -356,7 +356,7 @@
     {
       "atomType": "Input",
       "x": 0.0264,
-      "y": 0.7359999999999999,
+      "y": 0.7401812688821753,
       "uniqueID": "id-1724",
       "name": "2DShape",
       "type": "array",
@@ -403,7 +403,7 @@
     {
       "atomType": "Input",
       "x": 0.0264,
-      "y": 0.8670694864048338,
+      "y": 0.8319999999999999,
       "uniqueID": "id-1938",
       "name": "Font",
       "type": "array",
@@ -432,7 +432,7 @@
         },
         {
           "name": "shapetype",
-          "ioValue": "hexagon"
+          "ioValue": "circle"
         },
         {
           "name": "width",

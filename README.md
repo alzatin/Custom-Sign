@@ -8,7 +8,7 @@
 
  Project Dimensions
 
-**Value:** Width: 288.1959010752969, Height: 332.7799605833336
+**Value:** Width: 249.5849729375, Height: 249.58497293750003
 
 
 
