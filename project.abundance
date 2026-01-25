@@ -29,7 +29,8 @@
     },
     {
       "name": "GCPasses",
-      "ioValue": 2
+      "ioValue": 2,
+      "currentEquation": "2"
     },
     {
       "name": "2DShape",
