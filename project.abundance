@@ -16,7 +16,8 @@
     },
     {
       "name": "ply_thickness",
-      "ioValue": 14
+      "ioValue": 24,
+      "currentEquation": "24"
     },
     {
       "name": "Margin",
@@ -170,7 +171,7 @@
         },
         {
           "name": "zDist",
-          "ioValue": 7
+          "ioValue": 12
         }
       ]
     },
@@ -199,15 +200,15 @@
       "ioValues": [
         {
           "name": "x",
-          "ioValue": 14
+          "ioValue": 24
         }
       ],
       "currentEquation": "x/2"
     },
     {
       "atomType": "Difference",
-      "x": 0.7152014652014652,
-      "y": 0.6012084592145015,
+      "x": 0.6882745471877979,
+      "y": 0.47129909365558914,
       "uniqueID": "id-970",
       "ioValues": [
         {
@@ -265,8 +266,8 @@
     },
     {
       "atomType": "Gcode",
-      "x": 0.8507326007326007,
-      "y": 0.7734138972809668,
+      "x": 0.8274547187797903,
+      "y": 0.7341389728096678,
       "uniqueID": "id-997",
       "ioValues": [
         {
@@ -315,8 +316,8 @@
     },
     {
       "atomType": "Export",
-      "x": 0.7509157509157509,
-      "y": 0.9123867069486405,
+      "x": 0.7111534795042899,
+      "y": 0.851963746223565,
       "uniqueID": "id-1522",
       "ioValues": [
         {
@@ -372,8 +373,8 @@
     },
     {
       "atomType": "Code",
-      "x": 0.6503791069924179,
-      "y": 0.6404833836858006,
+      "x": 0.6148713060057197,
+      "y": 0.755287009063444,
       "uniqueID": "id-1727",
       "ioValues": [
         {
@@ -510,7 +511,7 @@
         },
         {
           "name": "height",
-          "ioValue": 14
+          "ioValue": 24
         }
       ],
       "topLevel": false,
@@ -535,7 +536,7 @@
           "ioValues": [
             {
               "name": "height",
-              "ioValue": 14
+              "ioValue": 24
             },
             {
               "name": "width",
@@ -817,7 +818,7 @@
         },
         {
           "name": "ply_thickness",
-          "ioValue": 14
+          "ioValue": 24
         },
         {
           "name": "width",
@@ -878,7 +879,7 @@
             },
             {
               "name": "zDist",
-              "ioValue": 12
+              "ioValue": 20.571428571428573
             }
           ]
         },
@@ -891,7 +892,7 @@
           "ioValues": [
             {
               "name": "x",
-              "ioValue": 14
+              "ioValue": 24
             }
           ],
           "currentEquation": "x - x/7"
